@@ -1,51 +1,45 @@
 class TasksController < ApplicationController
+  before_action :set_list
+  before_action :set_task, only: [:edit, :update, :destroy]
 
-  def new
-    @task = @list.tasks.new
+  def edit
+  end
+
+  def index
+    @tasks = @list.tasks
   end
 
   def create
-    @task = @list.tasks.new(task_params)
-
+    @task = @list.tasks.build(task_params)
     if @task.save
-      redirect_to list_path(@list), notice: 'Task was successfully created.'
-    else
-      flash.now[:alert] = 'Failed to create task.'
-      render :new, status: :unprocessable_entity
+      redirect_to list_tasks_path(@list)
     end
   end
 
   def update
     if @task.update(task_params)
-      redirect_to list_path(@task.list), notice: 'Task was successfully updated.'
-    else
-      flash.now[:alert] = 'Failed to update task.'
-      render :edit, status: :unprocessable_entity
+      redirect_to list_tasks_path(@list)
     end
   end
 
   def destroy
-    if @task.destroy
-      redirect_to list_path(@task.list), notice: 'Task was successfully deleted.'
-    else
-      redirect_to list_path(@task.list), alert: 'Failed to delete task.'
-    end
+    @task.destroy
+    redirect_to list_tasks_path(@list)
   end
 
   private
 
-  # Strong parameters
   def task_params
     params.require(:task).permit(:name, :description, :list_position)
   end
 
-  # Set task before update and destroy
   def set_task
     @task = Task.find(params[:id])
   end
 
-  # Set list before creating a task
   def set_list
     @list = List.find(params[:list_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to lists_path
   end
 end

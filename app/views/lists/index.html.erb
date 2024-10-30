@@ -21,6 +21,7 @@
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Name</th>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Position</th>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Action</th>
+    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Task</th>
   </tr>
   </thead>
   <tbody>
@@ -35,6 +36,8 @@
       <td class="px-3 py-4 text-sm font-normal text-left text-red-600 underline break-words bg-light">
         <%= link_to 'Update', edit_list_path(list), class: 'btn btn-warning' %>
         <%= button_to "Delete", list_path(list), method: :delete %>
+      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+        <%= button_to 'View Tasks', list_tasks_path(list), method: :get, class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
       </td>
     </tr>
   <% end %>
