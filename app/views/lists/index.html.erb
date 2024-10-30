@@ -19,6 +19,7 @@
   <thead>
   <tr>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Name</th>
+    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Position</th>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Action</th>
   </tr>
   </thead>
@@ -28,8 +29,11 @@
       <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
         <%= list.name %>
       </td>
+      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+        <%= list.position %>
+      </td>
       <td class="px-3 py-4 text-sm font-normal text-left text-red-600 underline break-words bg-light">
-        <%= link_to 'Edit', edit_list_path(list), class: 'btn btn-warning' %>
+        <%= link_to 'Update', edit_list_path(list), class: 'btn btn-warning' %>
         <%= button_to "Delete", list_path(list), method: :delete %>
       </td>
     </tr>

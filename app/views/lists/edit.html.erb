@@ -1,14 +1,17 @@
-<h1>Edit List</h1>
+<h1 class="text-3xl font-bold mb-6">Edit List</h1>
 
-<%= form_with model: @list, local: true do |form| %>
-  <div>
-    <%= form.label :name, 'List Name' %>
-    <%= form.text_field :name, required: true %>
+<%= form_with model: @list, local: true, class: "space-y-6" do |form| %>
+  <div class="flex flex-col space-y-2">
+    <%= form.label :name, 'List Name', class: 'text-lg font-semibold' %>
+    <%= form.text_field :name, required: true, class: 'border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+  </div>
+  <div class="flex flex-col space-y-2">
+    <%= form.label :position, 'Position', class: 'text-lg font-semibold' %>
+    <%= form.text_field :position, required: true, class: 'border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
   </div>
 
-  <div>
-    <%= form.submit 'Update List', class: 'btn btn-success' %>
+  <div class="flex space-x-4">
+    <%= form.submit 'Update List', class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+    <%= link_to 'Back to Lists', lists_path, class: 'bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500' %>
   </div>
 <% end %>
-
-<%= link_to 'Back to Lists', lists_path, class: 'btn btn-secondary' %>
