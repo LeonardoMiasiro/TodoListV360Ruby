@@ -6,11 +6,11 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = @list.tasks
+    @tasks = @list.tasks.order(:list_position)
   end
 
   def create
-    @task = @list.tasks.build(task_params)
+    @task = @list.tasks.build(name: params[:task][:name], description: params[:task][:description],list_position: params[:task][:list_position])
     if @task.save
       redirect_to list_tasks_path(@list)
     end
@@ -26,8 +26,6 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to list_tasks_path(@list)
   end
-
-  private
 
   def task_params
     params.require(:task).permit(:name, :description, :list_position)

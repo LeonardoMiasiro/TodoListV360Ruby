@@ -1,6 +1,10 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:edit, :update, :destroy]
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
   def index
     @lists = List.order(:position)
   end
@@ -10,10 +14,6 @@ class ListsController < ApplicationController
     if @list.valid?
       redirect_to lists_path
     end
-  end
-
-  def edit
-    @list = List.find(params[:id])
   end
 
   def update
@@ -32,7 +32,7 @@ class ListsController < ApplicationController
   def set_list
     @list = List.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to lists_path, alert: 'Lista não encontrada.'
+    redirect_to lists_path
   end
 
   def list_params

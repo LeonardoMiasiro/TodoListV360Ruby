@@ -1,4 +1,4 @@
-<h1 class="text-3xl font-bold mb-6">Tasks da <%= @list.name %></h1>
+<h1 class="text-lg">Tasks of <%= @list.name %></h1>
 
 <%= form_with(model: Task.new, url: list_tasks_path(@list), local: true, class: "my-10") do |form| %>
   <div class="my-5">
@@ -9,6 +9,11 @@
   <div class="my-5">
     <%= form.label :description, class: "block text-lg font-medium" %>
     <%= form.text_field :description, placeholder: "Description",
+                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :position, class: "block text-lg font-medium" %>
+    <%= form.text_field :list_position, placeholder: "Position",
                         class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
   </div>
 
@@ -23,6 +28,7 @@
   <tr>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Name</th>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Description</th>
+    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Position</th>
     <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Action</th>
   </tr>
   </thead>
@@ -35,7 +41,10 @@
       <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
         <%= task.description %>
       </td>
-      <td class="px-3 py-4 text-sm font-normal text-left text-red-600 underline break-words bg-light">
+      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+        <%= task.list_position %>
+      </td>
+      <td class="px-3 py-4 text-lg font-normal text-center text-red-600 underline bg-gray-50">
         <%= link_to 'Update', edit_list_task_path(@list, task), class: 'text-blue-500 hover:underline' %>
         <%= button_to 'Delete', list_task_path(@list, task), method: :delete, class: 'text-red-500 hover:underline' %>
       <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">

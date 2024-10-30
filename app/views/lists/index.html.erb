@@ -2,12 +2,12 @@
 
 <%= form_with(model: List.new, class: "my-10") do |form| %>
   <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, placeholder: "Name", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
+    <%= form.label :Name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
   </div>
   <div class="my-5">
-    <%= form.label :position %>
-    <%= form.text_field :position, placeholder: "Position", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
+    <%= form.label :Position %>
+    <%= form.text_field :position, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
   </div>
 
   <div class="inline">
@@ -18,25 +18,25 @@
 <table class="w-3/5 mt-10 border-separate table-auto text-slate-500">
   <thead>
   <tr>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Name</th>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Position</th>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Action</th>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Task</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Name</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Position</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Action</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Task</th>
   </tr>
   </thead>
   <tbody>
   <% @lists.each do |list| %>
     <tr>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= list.name %>
       </td>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= list.position %>
       </td>
-      <td class="px-3 py-4 text-sm font-normal text-left text-red-600 underline break-words bg-light">
+      <td class="px-1 py-1 text-lg font-normal text-center text-red-600 underline bg-gray-50">
         <%= link_to 'Update', edit_list_path(list), class: 'btn btn-warning' %>
         <%= button_to "Delete", list_path(list), method: :delete %>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= button_to 'View Tasks', list_tasks_path(list), method: :get, class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
       </td>
     </tr>
