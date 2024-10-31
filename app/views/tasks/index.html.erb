@@ -3,25 +3,25 @@
 <%= form_with(model: Task.new, url: list_tasks_path(@list), local: true, class: "space-y-3 max-w-xs") do |form| %>
   <div class="my-3">
     <%= form.label :name, class: "block text-md font-semibold" %>
-    <%= form.text_field :name, placeholder: "Name", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 w-3/4" %>
+    <%= form.text_field :name, placeholder: "Name", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 " %>
   </div>
 
   <div class="my-3">
     <%= form.label :description, class: "block text-md font-semibold" %>
-    <%= form.text_field :description, placeholder: "Description", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 w-3/4" %>
+    <%= form.text_field :description, placeholder: "Description", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 " %>
   </div>
 
   <div class="my-3">
     <%= form.label :position, class: "block text-md font-semibold" %>
-    <%= form.text_field :list_position, placeholder: "Position", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 w-3/4" %>
+    <%= form.text_field :list_position, placeholder: "Position", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2" %>
   </div>
 
-  <div class="flex flex-col space-y-2 w-3/4">
-    <%= form.submit "Create Task", class: 'w-3/4 mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
+  <div class="flex flex-col space-y-2 ">
+    <%= form.submit "Create Task", class: ' mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
 
-    <%= link_to 'Search', search_path, class: 'w-3/4 mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
+    <%= link_to 'Search', search_path, class: ' mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
 
-    <%= link_to 'Back to Lists', lists_path, class: 'w-3/4 mt-2 bg-gray-500 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
+    <%= link_to 'Back to Lists', lists_path, class: ' mt-2 bg-gray-500 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
   </div>
 <% end %>
 
