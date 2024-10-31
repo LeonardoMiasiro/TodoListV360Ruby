@@ -26,35 +26,35 @@
 <table class="w-3/5 mt-10 border-separate table-auto text-slate-500">
   <thead>
   <tr>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Name</th>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Description</th>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Position</th>
-    <th class="p-3 text-sm font-semibold text-left text-gray-700 bg-gray-200">Action</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Name</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Description</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Position</th>
+    <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Action</th>
   </tr>
   </thead>
   <tbody>
   <% @tasks.each do |task| %>
     <tr>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= task.name %>
       </td>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= task.description %>
       </td>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= task.list_position %>
       </td>
-      <td class="px-3 py-4 text-lg font-normal text-center text-red-600 underline bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-red-600 underline bg-gray-50">
         <%= link_to 'Update', edit_list_task_path(@list, task), class: 'text-blue-500 hover:underline' %>
         <%= button_to 'Delete', list_task_path(@list, task), method: :delete, class: 'text-red-500 hover:underline' %>
-      <td class="px-3 py-4 text-sm font-normal text-left text-gray-600 bg-gray-50">
+      <td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <div class="mt-10 flex justify-center">
-  <%= link_to 'Voltar para as Listas', lists_path,
+  <%= link_to 'Back to Lists', lists_path,
               class: 'block w-64 h-16 bg-gray-500 text-white text-center text-lg font-semibold leading-[4rem] rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500' %>
 </div>
 

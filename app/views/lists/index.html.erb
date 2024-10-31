@@ -1,10 +1,13 @@
-<h1 class="text-2xl">Todo List</h1>
+<header>
+  <h1 class="text-2xl font-bold text-center bg-blue-500">Todo List</h1>
+</header>
 
-<%= form_with(model: List.new, class: "my-10") do |form| %>
+  <%= form_with(model: List.new, class: "my-10") do |form| %>
   <div class="my-5">
     <%= form.label :Name %>
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
   </div>
+
   <div class="my-5">
     <%= form.label :Position %>
     <%= form.text_field :position, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
@@ -13,6 +16,11 @@
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
+
+  <div class="inline">
+    <%= link_to 'Search', search_path, class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+  </div>
+
 <% end %>
 
 <table class="w-3/5 mt-10 border-separate table-auto text-slate-500">

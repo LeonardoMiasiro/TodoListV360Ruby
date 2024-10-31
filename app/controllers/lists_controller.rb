@@ -1,10 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:edit, :update, :destroy]
 
-  def edit
-    @list = List.find(params[:id])
-  end
-
   def index
     @lists = List.order(:position)
   end

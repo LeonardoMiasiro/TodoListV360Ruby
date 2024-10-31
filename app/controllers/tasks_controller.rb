@@ -2,9 +2,6 @@ class TasksController < ApplicationController
   before_action :set_list
   before_action :set_task, only: [:edit, :update, :destroy]
 
-  def edit
-  end
-
   def index
     @tasks = @list.tasks.order(:list_position)
   end
