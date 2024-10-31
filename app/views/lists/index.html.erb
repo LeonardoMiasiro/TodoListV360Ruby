@@ -1,26 +1,23 @@
 <header>
-  <h1 class="text-2xl font-bold text-center bg-blue-500">Todo List</h1>
+  <h1 class="text-2xl font-bold text-center">Todo List</h1>
 </header>
 
-  <%= form_with(model: List.new, class: "my-10") do |form| %>
+<%= form_with(model: List.new, class: "my-10") do |form| %>
   <div class="my-5">
-    <%= form.label :Name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
+    <%= form.label :Name, class: "block text-lg font-semibold" %>
+    <%= form.text_field :name, placeholder: "Name", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/4" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :Position %>
-    <%= form.text_field :position, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
+    <%= form.label :Position, class: "block text-lg font-semibold" %>
+    <%= form.text_field :position, placeholder: "Position", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/4" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <div class="flex flex-col items-center justify-center">
+    <%= form.submit 'Create List', class: 'w-full rounded-lg py-2 px-3 bg-blue-600 text-white font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-3/4' %>
 
-  <div class="inline">
-    <%= link_to 'Search', search_path, class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+    <%= link_to 'Search', search_path, class: 'w-full mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
   </div>
-
 <% end %>
 
 <table class="w-3/5 mt-10 border-separate table-auto text-slate-500">
@@ -41,11 +38,12 @@
       <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= list.position %>
       </td>
-      <td class="px-1 py-1 text-lg font-normal text-center text-red-600 underline bg-gray-50">
-        <%= link_to 'Update', edit_list_path(list), class: 'btn btn-warning' %>
-        <%= button_to "Delete", list_path(list), method: :delete %>
-      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
-        <%= button_to 'View Tasks', list_tasks_path(list), method: :get, class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+      <td class="px-1 py-1 text-lg font-normal text-center text-red-600 underline bg-gray-50 w-3/4">
+        <%= link_to 'Update', edit_list_path(list), class: 'text-blue-500 hover:underline' %>
+        <%= button_to "Delete", list_path(list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline' %>
+      </td>
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50 w-3/4">
+        <%= button_to 'View Tasks', list_tasks_path(list), method: :get, class: 'bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500' %>
       </td>
     </tr>
   <% end %>

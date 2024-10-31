@@ -1,29 +1,31 @@
-<h1 class="text-lg">Tasks of <%= @list.name %></h1>
+<h1 class="text-2xl font-bold mb-6">Tasks of <%= @list.name %></h1>
 
-<%= form_with(model: Task.new, url: list_tasks_path(@list), local: true, class: "my-10") do |form| %>
-  <div class="my-5">
-    <%= form.label :name, class: "block text-lg font-medium" %>
-    <%= form.text_field :name, placeholder: "Name",
-                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
-  </div>
-  <div class="my-5">
-    <%= form.label :description, class: "block text-lg font-medium" %>
-    <%= form.text_field :description, placeholder: "Description",
-                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
-  </div>
-  <div class="my-5">
-    <%= form.label :position, class: "block text-lg font-medium" %>
-    <%= form.text_field :list_position, placeholder: "Position",
-                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-2/4" %>
+<%= form_with(model: Task.new, url: list_tasks_path(@list), local: true, class: "space-y-3 max-w-xs") do |form| %>
+  <div class="my-3">
+    <%= form.label :name, class: "block text-md font-semibold" %>
+    <%= form.text_field :name, placeholder: "Name", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 w-3/4" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit "Create Task",
-                    class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="my-3">
+    <%= form.label :description, class: "block text-md font-semibold" %>
+    <%= form.text_field :description, placeholder: "Description", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 w-3/4" %>
+  </div>
+
+  <div class="my-3">
+    <%= form.label :position, class: "block text-md font-semibold" %>
+    <%= form.text_field :list_position, placeholder: "Position", class: "block shadow rounded-md border border-gray-200 outline-none px-6 py-2 mt-2 w-3/4" %>
+  </div>
+
+  <div class="flex flex-col space-y-2 w-3/4">
+    <%= form.submit "Create Task", class: 'w-3/4 mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
+
+    <%= link_to 'Search', search_path, class: 'w-3/4 mt-2 bg-blue-600 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
+
+    <%= link_to 'Back to Lists', lists_path, class: 'w-3/4 mt-2 bg-gray-500 text-white py-2 px-3 rounded-lg font-medium cursor-pointer hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center' %>
   </div>
 <% end %>
 
-<table class="w-3/5 mt-10 border-separate table-auto text-slate-500">
+<table class="w-full mt-6 border-separate border-spacing-1 text-slate-500">
   <thead>
   <tr>
     <th class="p-3 text-lg font-semibold text-center text-gray-700 bg-gray-200">Name</th>
@@ -44,17 +46,11 @@
       <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= task.list_position %>
       </td>
-      <td class="px-1 py-1 text-lg font-normal text-center text-red-600 underline bg-gray-50">
+      <td class="px-1 py-1 text-lg font-normal text-center text-gray-600 bg-gray-50">
         <%= link_to 'Update', edit_list_task_path(@list, task), class: 'text-blue-500 hover:underline' %>
-        <%= button_to 'Delete', list_task_path(@list, task), method: :delete, class: 'text-red-500 hover:underline' %>
-      <td>
+        <%= button_to 'Delete', list_task_path(@list, task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline' %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
-<div class="mt-10 flex justify-center">
-  <%= link_to 'Back to Lists', lists_path,
-              class: 'block w-64 h-16 bg-gray-500 text-white text-center text-lg font-semibold leading-[4rem] rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500' %>
-</div>
-
